@@ -47,12 +47,18 @@ FORMAT(CALENDARIO[Fechakey], "dd")
 Devuelve el día del mes.
 
 
-## 3. COLUMNAS CALCULADAS DESDE LA MISMA EXPRESIÓN CON LA FUNCIÓN ADDCOLUMNS
+**3. COLUMNAS CALCULADAS DESDE LA MISMA EXPRESIÓN CON LA FUNCIÓN ADDCOLUMNS**
 
-## 4. MEDIDAS VENTAS | SUM
-### 4.1. Total Cantidades Vendidas = `sum(VENTAS[Cantidad_vendida])`
-### 4.2. Total Cantidades Devueltas = `sum(VENTAS[Cantidad_Devoluciones])`
-### 4.3. Total Unidades Vendidas Netas = `[Total Cantidades Vendidas] - [Total Cantidades Devueltas]`
+**4. MEDIDAS VENTAS | SUM**
+4.1. **Total Cantidades Vendidas**  
+   `SUM(VENTAS[Cantidad_vendida])`
+
+4.2. **Total Cantidades Devueltas**  
+   `SUM(VENTAS[Cantidad_Devoluciones])`
+
+4.3. **Total Unidades Vendidas Netas**  
+   `[Total Cantidades Vendidas] - [Total Cantidades Devueltas]`
+
 
 ## 5. COLUMNAS CALCULADAS | Productos | Condicionales IF
 ### 5.1. Función IF
