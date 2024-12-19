@@ -1,15 +1,51 @@
 # Índice de Conceptos DAX
 
-## 1. Concepto DAX
+# Concepto DAX
 
 ## 2. CC_CON TABLA FECHAS
-### 2.1. Año = `YEAR(CALENDARIO[Fechakey])`
-### 2.2. Mes = `FORMAT(CALENDARIO[Fechakey], "mmmm")`
-### 2.3. Día Nombre = `FORMAT(CALENDARIO[Fechakey], "DDDD")`
-### 2.4. Trimestre = `"Trimestre " & Q UARTER(CALENDARIO[Fechakey])`
-### 2.5. Semestre = `"Semestre " & ROUNDUP(MONTH(CALENDARIO[Fechakey])/6, 0)`
-### 2.6. Semana = `"Semana " & WEEKNUM(CALENDARIO[Fechakey], 2)`
-### 2.7. Día = `FORMAT(CALENDARIO[Fechakey], "dd")`
+
+### 2.1. Año
+```DAX
+YEAR(CALENDARIO[Fechakey])
+```
+Devuelve el año de la columna `Fechakey`.
+
+### 2.2. Mes
+```DAX
+FORMAT(CALENDARIO[Fechakey], "mmmm")
+```
+Devuelve el nombre completo del mes.
+
+### 2.3. Día Nombre
+```DAX
+FORMAT(CALENDARIO[Fechakey], "DDDD")
+```
+Devuelve el nombre completo del día de la semana.
+
+### 2.4. Trimestre
+```DAX
+"Trimestre " & Q UARTER(CALENDARIO[Fechakey])
+```
+Devuelve el trimestre del año correspondiente.
+
+### 2.5. Semestre
+```DAX
+"Semestre " & ROUNDUP(MONTH(CALENDARIO[Fechakey])/6, 0)
+```
+Devuelve el semestre (1 o 2) al que pertenece el mes.
+
+### 2.6. Semana
+```DAX
+"Semana " & WEEKNUM(CALENDARIO[Fechakey], 2)
+```
+Devuelve el número de la semana.
+
+### 2.7. Día
+```DAX
+FORMAT(CALENDARIO[Fechakey], "dd")
+```
+Devuelve el día del mes.
+
 
 ## 3. COLUMNAS CALCULADAS DESDE LA MISMA EXPRESIÓN CON LA FUNCIÓN ADDCOLUMNS
 
