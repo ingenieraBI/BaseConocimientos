@@ -2,132 +2,139 @@
 
 ## 1. Concepto DAX
 
-### 2. CC_CON TABLA FECHAS
+El DAX (Data Analysis Expressions) es un lenguaje funcional que se utiliza en herramientas como Power BI, Power Pivot y SSAS Tabular para crear columnas calculadas, medidas y tablas calculadas.
 
-#### 2.1. Año
+## 2. CC_CON TABLA FECHAS
+
+### 2.1. Año
 ```DAX
 YEAR(CALENDARIO[Fechakey])
-```
-Devuelve el año de la columna `Fechakey`.
+Devuelve el año de la columna Fechakey.
 
-#### 2.2. Mes
-```DAX
+2.2. Mes
+DAX
+Copiar código
 FORMAT(CALENDARIO[Fechakey], "mmmm")
-```
 Devuelve el nombre completo del mes.
 
-#### 2.3. Día Nombre
-```DAX
+2.3. Día Nombre
+DAX
+Copiar código
 FORMAT(CALENDARIO[Fechakey], "DDDD")
-```
 Devuelve el nombre completo del día de la semana.
 
-#### 2.4. Trimestre
-```DAX
-"Trimestre " & Q UARTER(CALENDARIO[Fechakey])
-```
+2.4. Trimestre
+DAX
+Copiar código
+"Trimestre " & QUARTER(CALENDARIO[Fechakey])
 Devuelve el trimestre del año correspondiente.
 
-#### 2.5. Semestre
-```DAX
+2.5. Semestre
+DAX
+Copiar código
 "Semestre " & ROUNDUP(MONTH(CALENDARIO[Fechakey])/6, 0)
-```
 Devuelve el semestre (1 o 2) al que pertenece el mes.
 
-#### 2.6. Semana
-```DAX
+2.6. Semana
+DAX
+Copiar código
 "Semana " & WEEKNUM(CALENDARIO[Fechakey], 2)
-```
 Devuelve el número de la semana.
 
-#### 2.7. Día
-```DAX
+2.7. Día
+DAX
+Copiar código
 FORMAT(CALENDARIO[Fechakey], "dd")
-```
 Devuelve el día del mes.
 
-## 3. COLUMNAS CALCULADAS DESDE LA MISMA EXPRESIÓN CON LA FUNCIÓN ADDCOLUMNS
+3. COLUMNAS CALCULADAS DESDE LA MISMA EXPRESIÓN CON LA FUNCIÓN ADDCOLUMNS
+Ejemplo de uso de ADDCOLUMNS:
 
-## 4. MEDIDAS VENTAS | SUM
+DAX
+Copiar código
+ADDCOLUMNS(
+    TablaBase,
+    "NuevaColumna", [ColumnaExistente] * 2
+)
+Devuelve una tabla con columnas adicionales basadas en expresiones.
 
-#### 4.1. Total Cantidades Vendidas
-```DAX
-sum(VENTAS[Cantidad_vendida])
-```
-Devuelve la suma total de las cantidades vendidas.
+4. MEDIDAS VENTAS | SUM
+4.1. Total Cantidades Vendidas
+DAX
+Copiar código
+SUM(VENTAS[Cantidad_vendida])
+Suma el total de cantidades vendidas.
 
-#### 4.2. Total Cantidades Devueltas
-```DAX
-sum(VENTAS[Cantidad_Devoluciones])
-```
-Devuelve la suma total de las cantidades devueltas.
+4.2. Total Cantidades Devueltas
+DAX
+Copiar código
+SUM(VENTAS[Cantidad_Devoluciones])
+Suma el total de cantidades devueltas.
 
-#### 4.3. Total Unidades Vendidas Netas
-```DAX
+4.3. Total Unidades Vendidas Netas
+DAX
+Copiar código
 [Total Cantidades Vendidas] - [Total Cantidades Devueltas]
-```
-Devuelve el total neto de unidades vendidas.
+Calcula las unidades vendidas netas restando las devoluciones.
 
-## 5. COLUMNAS CALCULADAS | Productos | Condicionales IF
-
-#### 5.1. Funciones IF
-```DAX
-IF(Condición, ValorSiVerdadero, ValorSiFalso)
-```
+5. COLUMNAS CALCULADAS | Productos | Condicionales IF
+5.1. Función IF
+DAX
+Copiar código
+IF(Condición, ResultadoVerdadero, ResultadoFalso)
 Devuelve un valor basado en la evaluación de la condición.
 
-#### 5.2. Funciones IF Anidadas
-```DAX
-IF(Condición1, Valor1, IF(Condición2, Valor2, ValorPredeterminado))
-```
-Evalúa múltiples condiciones anidadas.
+5.2. Función IF anidada
+DAX
+Copiar código
+IF(Condición1, Resultado1, IF(Condición2, Resultado2, ResultadoFalso))
+Anida varias condiciones.
 
-#### 5.3. Operador OR
-```DAX
+5.3. Operador OR
+DAX
+Copiar código
 Condición1 || Condición2
-```
 Devuelve verdadero si alguna de las condiciones es verdadera.
 
-#### 5.4. Operador Pipes
-```DAX
+5.4. Operador Pipes
+DAX
+Copiar código
 Condición1 || Condición2
-```
-Funciona como un operador OR alternativo.
+Devuelve verdadero si alguna de las condiciones es verdadera (alternativa a OR).
 
-#### 5.5. Con IN
-```DAX
+5.5. Con IN
+DAX
+Copiar código
 Valor IN {Lista_valores}
-```
 Devuelve verdadero si el valor está en la lista.
 
-#### 5.6. Con &&
-```DAX
+5.6. Con &&
+DAX
+Copiar código
 Condición1 && Condición2
-```
 Devuelve verdadero si ambas condiciones son verdaderas.
 
-## 6. Medidas | Productos | COUNT, COUNTA, COUNTROWS, DISTINCTCOUNT
-
-#### 6.1. COUNT
-```DAX
+6. Medidas | Productos | COUNT, COUNTA, COUNTROWS, DISTINCTCOUNT
+COUNT
+DAX
+Copiar código
 COUNT(Columna)
-```
 Cuenta el número de valores no nulos en la columna especificada.
 
-#### 6.2. COUNTA
-```DAX
+COUNTA
+DAX
+Copiar código
 COUNTA(Columna)
-```
-Cuenta todos los valores no vacíos en la columna especificada.
+Cuenta todos los valores (incluyendo texto) en la columna especificada.
 
-#### 6.3. COUNTROWS
-```DAX
+COUNTROWS
+DAX
+Copiar código
 COUNTROWS(Tabla)
-```
-Cuenta el número total de filas en la tabla especificada.
+Cuenta el número de filas en una tabla.
 
-#### 6.4. DISTINCTCOUNT
-```DAX
+DISTINCTCOUNT
+DAX
+Copiar código
 DISTINCTCOUNT(Columna)
-```
-Cuenta el número de valores únicos en la columna especificada.
+Cuenta el número de valores únicos en la columna.
