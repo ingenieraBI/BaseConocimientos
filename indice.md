@@ -4,13 +4,6 @@
 
 ### 2. CC_CON TABLA FECHAS
 
-<div style="background-color: black; color: white; padding: 10px; border-radius: 5px;">
-<code>
-SUM(VENTAS[Cantidad_vendida])
-</code>
-</div>
-
-
 #### 2.1. Año
 ```DAX
 YEAR(CALENDARIO[Fechakey])
