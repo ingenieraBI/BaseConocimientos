@@ -138,3 +138,84 @@ DAX
 Copiar código
 DISTINCTCOUNT(Columna)
 Cuenta el número de valores únicos en la columna.
+
+Instrucciones:
+
+Copia todo este contenido.
+Pega directamente en tu archivo en GitHub.
+Realiza el commit con un mensaje como: Añadido índice completo de conceptos DAX.
+Si necesitas alguna revisión o ajuste después de que lo veas en GitHub, ¡solo dime!
+
+
+
+
+
+Tú dijiste:
+
+
+
+ves, que no se ve bien como esperaba, lo único que veo bien es lo que ves en la imagen 3
+ChatGPT Plus
+ChatGPT
+Entiendo que estás buscando una estructura limpia y organizada como en la imagen 3. Para que todo quede bien alineado y claro, lo organizaremos de esta manera:
+
+Usaremos encabezados para las secciones principales.
+Dentro de cada sección, utilizaremos bloques de código para las fórmulas.
+Aseguraremos que la descripción de las fórmulas esté debajo de cada bloque.
+Aquí está un ejemplo corregido y mejorado:
+
+markdown
+Copiar código
+# Índice de Conceptos DAX
+
+## 1. Concepto DAX
+El DAX (Data Analysis Expressions) es un lenguaje funcional que se utiliza en herramientas como Power BI, Power Pivot y SSAS Tabular para crear columnas calculadas, medidas y tablas calculadas.
+
+## 2. CC_CON TABLA FECHAS
+
+### 2.1. Año
+```DAX
+YEAR(CALENDARIO[Fechakey])
+Devuelve el año de la columna Fechakey.
+
+2.2. Mes
+DAX
+Copiar código
+FORMAT(CALENDARIO[Fechakey], "mmmm")
+Devuelve el nombre completo del mes.
+
+2.3. Día Nombre
+DAX
+Copiar código
+FORMAT(CALENDARIO[Fechakey], "DDDD")
+Devuelve el nombre completo del día de la semana.
+
+2.4. Trimestre
+DAX
+Copiar código
+"Trimestre " & QUARTER(CALENDARIO[Fechakey])
+Devuelve el trimestre del año correspondiente.
+
+2.5. Semestre
+DAX
+Copiar código
+"Semestre " & ROUNDUP(MONTH(CALENDARIO[Fechakey])/6, 0)
+Devuelve el semestre (1 o 2) al que pertenece el mes.
+
+2.6. Semana
+DAX
+Copiar código
+"Semana " & WEEKNUM(CALENDARIO[Fechakey], 2)
+Devuelve el número de la semana.
+
+2.7. Día
+DAX
+Copiar código
+FORMAT(CALENDARIO[Fechakey], "dd")
+Devuelve el día del mes.
+
+DISTINCTCOUNT
+DAX
+Copiar código
+DISTINCTCOUNT(Columna)
+Cuenta el número de valores únicos en la columna.
